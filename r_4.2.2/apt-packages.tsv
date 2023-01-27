@@ -537,7 +537,7 @@ libmodule-runtime-perl	0.016-1	all	Perl module for runtime module handling
 libmongoose2:amd64	1:5.10.1+dfsg-4build1	amd64	graph partitioning tool that can quickly compute edge cuts (shared library)
 libmono-corlib4.5-dll	6.8.0.105+dfsg-3.2	all	Mono core library (for CLI 4.5)
 libmono-security4.0-cil	6.8.0.105+dfsg-3.2	all	Mono Security library (for CLI 4.0)
-libmono-system-configuration4.0-cil 6.8.0.105+dfsg-3.2	all	Mono System.Configuration library (for CLI 4.0)
+libmono-system-configuration4.0-cil	6.8.0.105+dfsg-3.2	all	Mono System.Configuration library (for CLI 4.0)
 libmono-system-core4.0-cil	6.8.0.105+dfsg-3.2	all	Mono System.Core library (for CLI 4.0)
 libmono-system-numerics4.0-cil	6.8.0.105+dfsg-3.2	all	Mono System.Numerics library (for CLI 4.0)
 libmono-system-security4.0-cil	6.8.0.105+dfsg-3.2	all	Mono System.Security library (for CLI 4.0)
