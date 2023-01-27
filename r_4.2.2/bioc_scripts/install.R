@@ -1,0 +1,49 @@
+install.packages("BiocManager", repos="https://cran.rstudio.com")
+BiocManager::install(version="3.16", update=TRUE, ask=FALSE)
+BiocManager::install(c('devtools'))
+install.packages("pacman")
+install.packages("RcppParallel")
+install.packages(
+  c(
+    "Seurat",
+    "hdf5r",
+    "anndata",
+    "remotes",
+    "kableExtra",
+    "tidyverse",
+    "cowplot",
+    "RColorBrewer",
+    "pheatmap",
+    "scales",
+    "tidytext",
+    "reticulate",
+    "plotly",
+    "R.utils",
+    "patchwork",
+    "metap",
+    "gridExtra",
+    "calibrate",
+    "ggrepel",
+    "tidyr"
+  )
+)
+
+BiocManager::install(c(
+  "Rsamtools",
+  "BiocGenerics",
+  "S4Vectors",
+  "multtest",
+  "gprofiler2",
+  "TissueEnrich",
+  "dittoSeq",
+  "ComplexHeatmap"
+))
+install.packages("SeuratObject")
+install.packages("data.table")
+BiocManager::install("IRanges")
+BiocManager::install("GenomicRanges")
+BiocManager::install('limma')
+
+remotes::install_github("milescsmith/enhancedDimPlot")
+remotes::install_github("satijalab/seurat-wrappers")
+install.packages("Signac")
