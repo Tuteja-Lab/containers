@@ -26,7 +26,7 @@ coreutils	8.32-4.1ubuntu1	amd64	GNU core utilities
 cpp	4:11.2.0-1ubuntu1	amd64	GNU C preprocessor (cpp)
 cpp-11	11.3.0-1ubuntu1~22.04	amd64	GNU C preprocessor
 curl	7.81.0-1ubuntu1.6	amd64	command line tool for transferring data with URL syntax
-dash	0.5.11+git20210903+057cd650a4ed-3build1 amd64	POSIX-compliant shell
+dash	0.5.11+git20210903+057cd650a4ed-3build1	amd64	POSIX-compliant shell
 debconf	1.5.79ubuntu1	all	Debian configuration management system
 debianutils	5.5-1ubuntu2	amd64	Miscellaneous utilities specific to Debian
 default-jdk	2:1.11-72build2	amd64	Standard Java or Java compatible Development Kit
