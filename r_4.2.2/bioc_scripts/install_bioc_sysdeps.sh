@@ -149,7 +149,7 @@ pip3 install scikit-learn \
         umap-learn \
         packaging \
         anndata
-#pip3 install MACS2==2.2.6
+pip install MACS2
 
 ## libgdal is needed for sf
 apt-get install -y --no-install-recommends \
