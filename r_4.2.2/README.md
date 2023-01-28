@@ -12,3 +12,11 @@ sudo docker build -t rstudio:4.2.2  -f Dockerfile .
 sudo singularity build rstudio-4.2.2.sif docker-daemon://rstudio:4.2.2
 ```
 
+## Dockerhub
+
+You can also pull the image from the Dockerhub:
+
+```bash
+ml singularity
+singularity pull docker://arnstrm2/rstudio:4.2.2
+```
