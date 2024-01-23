@@ -16,6 +16,15 @@ RUN cd /tmp && \
     cp -rp bin/* /usr/local/bin && \
     cd .. && rm -rf kentUtils
 
+RUN cd /tmp && \
+    wget http://eddylab.org/software/squid/squid.tar.gz && \
+    tar -xzf squid.tar.gz && \
+    cd squid-* && \
+    ./configure && \
+    make && \
+    cp -rp shuffle /usr/local/bin/squidShuffle
+
+
 ADD scripts/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/*
 
