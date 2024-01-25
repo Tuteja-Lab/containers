@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 set -beEu -o pipefail
 
 # ---- Dependencies
@@ -11,7 +11,7 @@ prog="`basename $0`"
 # ---- Default parameter values.
 nullType="gc"
 nullSize="10"
-tmpRoot="/cluster/tmp/null.XXXXXXXXXX"
+tmpRoot="/tmp/null.XXXXXXXXXX"
 hub="hoxa"
 disableCluster=0
 splitSize=25
@@ -164,7 +164,7 @@ fi
 # ---- no need for placeNsInShuffledSeqs for randomlySampleGcMatch since it does that automatically
 if [ "$nullType" != "gc" ]; then
 	cat <<-EOF >| $tmpDir/match.sh
-		#!/bin/sh
+		#!/bin/bash
 		set -beEu -o pipefail
 		faUnmask.pl \$1 | awk '{ if (substr(\$0,0,1) != ">") { gsub("N|n|X|x","",\$0); } print \$0; }' |\\
 		  squidShuffle $nullType -n $nullSize --informat FASTA /dev/stdin | placeNsInShuffledSeqs \$1 stdin stdout |\\
@@ -172,7 +172,7 @@ if [ "$nullType" != "gc" ]; then
 	EOF
 else
 	cat <<-EOF >| $tmpDir/match.sh
-		#!/bin/sh
+		#!/bin/bash
 		set -beEu -o pipefail
 		faUnmask.pl \$1 | randomlySampleGcMatch -seed=\$3 -includeCoords -noRandom -noHap -noM -noXY -samples=$nullSize $excludeFile stdin $twoBitFile stdout | faUnmask.pl /dev/stdin >| \$2
 		#faUnmask.pl \$1 | randomlySampleGcMatch -includeCoords -noRandom -noHap -noM -noXY -samples=$nullSize $excludeFile stdin $twoBitFile stdout | faUnmask.pl /dev/stdin >| \$2
@@ -182,7 +182,7 @@ chmod a+x $tmpDir/match.sh
 
 # ---- Perform match
 if [ $disableCluster -eq 1 ]; then
-	$tmpDir/match.sh $inputFn $outputFn
+	$tmpDir/match.sh $inputFn $outputFn $((1 + RANDOM % 1000))
 else
 	mkdir $tmpDir/splitFa $tmpDir/par
 	faSplit sequence $inputFn $numBreaks $tmpDir/splitFa/split_ 

@@ -1,0 +1,47 @@
+FROM centos:centos7
+MAINTAINER Arun Seetharam <arnstrm@iastate.edu>
+
+RUN yum install -y g++ gcc curl wget bc build-essential make xz-utils git gnupg netbase python python-dev && \
+    yum clean all
+RUN yum install -y zlib-devel libpng-devel openssl-devel mysql-devel libstdc++-static libpng12 && \
+    yum clean all
+
+RUN git config --global http.sslverify false
+RUN cd /tmp && \
+    git clone https://github.com/ENCODE-DCC/kentUtils.git && \
+    cd kentUtils && \
+    sed -i 's/git clone http:/git clone https:/' Makefile && \
+    make && \
+    cp -rp bin/* /usr/local/bin && \
+    cd .. && rm -rf kentUtils
+
+RUN cd /tmp && \
+    wget http://eddylab.org/software/squid/squid.tar.gz && \
+    tar -xzf squid.tar.gz && \
+    cd squid-* && \
+    ./configure && \
+    make && \
+    cp -rp shuffle /usr/local/bin/squidShuffle
+
+ADD scripts/* /usr/local/bin/
+RUN chmod +x /usr/local/bin/*
+
+#RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+
+
+#RUN export LC_ALL=en_US.UTF-8
+#RUN export LANG=en_US.UTF-8
+#RUN locale-gen en_US.UTF-8
+#
+## Create UCSC public MySQL server configuration
+#RUN echo "db.host=genome-mysql.cse.ucsc.edu\ndb.user=genomep\ndb.password=password" > /root/.hg.conf
+#RUN apt-get install libssl1.0.0 libssl-dev --reinstall
+#RUN cd /lib/x86_64-linux-gnu && \
+#    ln -s libssl.so.1.0.0 libssl.so.10 && \
+#    ln -s libcrypto.so.1.0.0 libcrypto.so.10
+#RUN ln -s /lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/libssl.so.10
+#RUN ln -s /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/libcrypto.so.10
